@@ -1,3 +1,4 @@
-var user_name = "names";
-var user_age = 34;
+"use strict";
+const user_name = "names";
+const user_age = 34;
 console.log(user_name, user_age);
