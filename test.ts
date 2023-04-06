@@ -5,7 +5,7 @@ console.log(message)
 
 
 // unions
-
+// unions means using more than one types
 const formatCommandLine = (input: string | string[]) => {
     let line = ''
     if (typeof input === 'string'){
