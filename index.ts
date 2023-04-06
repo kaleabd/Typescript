@@ -2,7 +2,7 @@
 import { isPalindrome } from './utils'
 
 let message: string = 'Hello world!';
-console.log(message)
+console.log(message + "typescript is available!")
 
 // PRIMITIVE
 
