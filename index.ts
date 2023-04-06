@@ -148,10 +148,11 @@ const number  = +leet;
 console.log(isPalindrome('madam'))
 
 // declarations
-console.log(
-    'Logged in user: ',
-    process.env.USER
-)
+
+// console.log(
+//     'Logged in user: ',
+//     process.env.USER
+// )
 
 // asyn and await
 
