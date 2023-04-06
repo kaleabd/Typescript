@@ -424,7 +424,20 @@ function handleRequest(req: Request){
 }
 */
 
+// types & interfac
+//? Difference between them
 
+interface InputProps {
+    type: 'text'| 'email',
+    value: 'string',
+    onChange: (newValue: string) => void,
+}
+
+type Inputprops = {
+    type: 'text'| 'email',
+    value: 'string',
+    onChange: (newValue: string) => void,
+}
 
 
 
