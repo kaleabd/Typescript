@@ -424,8 +424,10 @@ function handleRequest(req: Request){
 }
 */
 
-// types & interfac
+// types & interface
 //? Difference between them
+//! types: unions, intersection(&), primitive, shorthand functions, shorthand, advanced type functions
+//! interface: declarations mering, familiarity(extends)
 
 interface InputProps {
     type: 'text'| 'email',
@@ -438,6 +440,53 @@ type Inputprops = {
     value: 'string',
     onChange: (newValue: string) => void,
 }
+
+// Never
+//! never returns
+
+const fail = (message: string) => {
+    throw new Error(message)
+}
+
+const sing = () => {
+    while(true){
+        console.log('Never gonna give you up')
+        console.log('Never gonna let you down')
+        console.log('Never gonna run around and desert you')
+    }
+}
+
+//! Applications of never
+
+function areas(s: Shape) {
+    if(s.kind == 'square'){
+        return s.size * s.size;
+    }
+    if(s.kind == 'rectangle'){
+        return s.height * s.width;
+    }
+
+    const _ensureAllCasesAreHandled: never = s;
+    return _ensureAllCasesAreHandled;
+}
+
+// Implements
+
+type Animals = {
+    name: string,
+    voice(): string,
+}
+
+class Cat implements Animals {
+    constructor(public name:string){}
+    voice(){
+        return 'meow'
+    }
+}
+
+// Asserts
+
+  
 
 
 
