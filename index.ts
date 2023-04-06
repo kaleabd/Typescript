@@ -486,7 +486,51 @@ class Cat implements Animals {
 
 // Asserts
 
-  
+//? will be get back to this concept later!
+
+// overloading
+//* funciton overloads
+
+function reverse(string: string): string;
+function reverse(stringArray: string[]): string[];
+
+function reverse(stringOrstringArray:string[] | string): string[] | string {
+    if(typeof stringOrstringArray === 'string'){
+        return stringOrstringArray.split('').reverse().join('');
+    }else{
+        return stringOrstringArray.slice().reverse();
+    }
+
+}
+
+const helloMessage = reverse('hello')
+console.log(helloMessage)
+
+type Addition = {
+    (a: number, b: number): number,
+    debugName?: string
+}
+
+const addition: Addition = (a: number, b: number) => {
+    return a + b
+}
+console.log(addition(4,5))
+
+// Index
+
+type usersInfo = {
+    displayName: string,
+    email: string
+}
+
+type userInfoDictionary = {
+    [username: string]: usersInfo,
+}
+
+const personInfo: userInfoDictionary = {
+    jane: {displayName: 'John', email: 'jhon@gmail.com'},
+}
+
 
 
 

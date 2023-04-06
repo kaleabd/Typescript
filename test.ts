@@ -81,3 +81,23 @@ function logValidation(result: ValidationResult): void{
 }
 
 logValidation({isValid: true, validatedValue: "something"})
+
+//! overloading concept example
+//* funciton overloads
+
+function reverse(string: string): string;
+function reverse(stringArray: string[]): string[];
+
+function reverse(stringOrstringArray:string[] | string): string[] | string {
+    if(typeof stringOrstringArray === 'string'){
+        return stringOrstringArray.split('').reverse().join('');
+    }else{
+        return stringOrstringArray.slice().reverse();
+    }
+
+}
+
+const helloMessage = reverse('hello')
+const h_e_l_l_o = reverse(['h', 'e', 'l', 'l', 'o'])
+console.log(helloMessage)
+console.log(h_e_l_l_o)
