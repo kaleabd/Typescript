@@ -587,6 +587,119 @@ point2 = point3;
  point3 = persona as unknown as pnt3D; // ok: i doubly trust you.
 
 
+// this
+
+function double(this: {value: number}){
+    this.value = this.value * 2
+}
+const valid = {
+    value: 10,
+    double,
+}
+valid.double() 
+
+console.log(valid.value) // 20 
+
+// Generic Constraints
+
+type NameField = {firstName: string, lastName: string}
+
+function addFullName<T extends NameField>(obj: T): T & {fullName: string}{
+    return {
+        ...obj,
+        fullName: `${obj.firstName} ${obj.lastName}`
+
+    }
+}
+
+const john = addFullName({
+    email: 'john@example.com',
+    firstName: 'john',
+    lastName: 'Doe',
+})
+console.log(john.email)
+console.log(john.fullName)
+
+const jane = addFullName({firstName: 'John', lastName: 'emilia', gender: 'binary'})
+
+console.log(jane.gender)
+
+// typeof
+
+const centers = {
+    x: 0,
+    y: 0,
+    z: 0
+}
+
+type Pnts = typeof centers
+
+const unit: Pnts = {
+    x: centers.x + 1,
+    y: centers.y + 1,
+    z: centers.z + 1,
+}  
+
+/*
+ or we can also use like,
+ const unit: typeof center = {
+    ...
+ }
+
+ we can assign the type directly to the function
+*/
+
+// lookup
+//! we use loookup like the indexing method to find the types of the objects we want in the square brackets below
+// typename['objweneededtolookup']
+
+type submitRequest = {
+    transactionId: string,
+    personal: {
+        firstName: string,
+        lastName: string,
+    },
+    payment: {
+        creditCardToken: string,
+    }
+}
+
+type PaymentRequests = submitRequest['payment']
+
+function getPayment(): PaymentRequests {
+    return {
+        creditCardToken: 'abebebesobela@whilechalaismechebetingchube'
+    }
+}
+
+// keyof
+
+type Prsns = {
+    name: string,
+    age: number,
+    location: string,
+}
+
+const johnny: Prsns = {
+    name: 'Jhonny',
+    age: 35,
+    location: 'Addis Ababa'
+}
+
+function logGet(obj: any, key: keyof Prsns): void {
+    const value = obj[key];
+    console.log('Getting: ', key, value)
+    return value
+}
+
+const age = logGet(johnny, 'age') // Getting:  age 35
+
+
+
+
+
+
+
 
 
 

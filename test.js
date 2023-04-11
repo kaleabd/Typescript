@@ -1,4 +1,15 @@
 // ts-node
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var message = 'hello world';
 console.log(message);
 // unions
@@ -77,3 +88,52 @@ var pnt = [0, 0];
 var moves = move(pnt, 10, 10);
 console.log(moves);
 console.log(pnt);
+// this
+function double() {
+    this.value = this.value * 2;
+}
+var valid = {
+    value: 10,
+    double: double
+};
+valid.double();
+console.log(valid.value); // 20 
+function addFullName(obj) {
+    return __assign(__assign({}, obj), { fullName: "".concat(obj.firstName, " ").concat(obj.lastName) });
+}
+var john = addFullName({
+    email: 'john@example.com',
+    firstName: 'john',
+    lastName: 'Doe'
+});
+console.log(john.email);
+console.log(john.fullName);
+var jane = addFullName({ firstName: 'John', lastName: 'emilia', gender: 'binary' });
+console.log(jane.gender);
+// typeof
+var center = {
+    x: 0,
+    y: 0,
+    z: 0
+};
+var unit = {
+    x: center.x + 1,
+    y: center.y + 1,
+    z: center.z + 1
+};
+function getPayment() {
+    return {
+        creditCardToken: 'abebebesobela@whilechalaismechebetingchube'
+    };
+}
+var johnny = {
+    name: 'Jhonny',
+    age: 35,
+    location: 'Addis Ababa'
+};
+function logGet(obj, key) {
+    var value = obj[key];
+    console.log('Getting: ', key, value);
+    return value;
+}
+var age = logGet(johnny, 'age');

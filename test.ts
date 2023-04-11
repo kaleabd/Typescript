@@ -145,3 +145,113 @@ const moves = move(pnt, 10,10)
 
 console.log(moves)
 console.log(pnt)
+
+// this
+
+function double(this: {value: number}){
+    this.value = this.value * 2
+}
+const valid = {
+    value: 10,
+    double,
+}
+valid.double() 
+
+console.log(valid.value) // 20 
+
+// Generic Constraints
+
+type NameField = {firstName: string, lastName: string}
+
+function addFullName<T extends NameField>(obj: T): T & {fullName: string}{
+    return {
+        ...obj,
+        fullName: `${obj.firstName} ${obj.lastName}`
+
+    }
+}
+
+const john = addFullName({
+    email: 'john@example.com',
+    firstName: 'john',
+    lastName: 'Doe',
+})
+console.log(john.email)
+console.log(john.fullName)
+
+const jane = addFullName({firstName: 'John', lastName: 'emilia', gender: 'binary'})
+
+console.log(jane.gender)
+
+// typeof
+
+const center = {
+    x: 0,
+    y: 0,
+    z: 0
+}
+
+type Pnts = typeof center
+
+const unit: Pnts = {
+    x: center.x + 1,
+    y: center.y + 1,
+    z: center.z + 1,
+}  
+
+/*
+ or we can also use like,
+ const unit: typeof center = {
+    ...
+ }
+
+ we can assign the type directly to the function
+*/
+
+// lookup
+//! we use loookup like the indexing method to find the types of the objects we want in the square brackets below
+// typename['objweneededtolookup']
+
+type submitRequest = {
+    transactionId: string,
+    personal: {
+        firstName: string,
+        lastName: string,
+    },
+    payment: {
+        creditCardToken: string,
+    }
+}
+
+type PaymentRequests = submitRequest['payment']
+
+function getPayment(): PaymentRequests {
+    return {
+        creditCardToken: 'abebebesobela@whilechalaismechebetingchube'
+    }
+}
+
+// keyof
+
+type Prsns = {
+    name: string,
+    age: number,
+    location: string,
+}
+
+const johnny: Prsns = {
+    name: 'Jhonny',
+    age: 35,
+    location: 'Addis Ababa'
+}
+
+function logGet(obj: any, key: keyof Prsns): void {
+    const value = obj[key];
+    console.log('Getting: ', key, value)
+    return value
+}
+
+const age = logGet(johnny, 'age')
+const locations = logGet(johnny, 'location')
+
+
