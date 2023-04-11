@@ -694,6 +694,29 @@ function logGet(obj: any, key: keyof Prsns): void {
 
 const age = logGet(johnny, 'age') // Getting:  age 35
 
+/*
+or we can use it withe generic types,
+
+function logGet<Obj, Key extends keyof Obj>(obj: Obj, key: Key){
+    ...
+}
+*/
+
+// Conditionals
+
+type IsNumber<T> = 
+    T extends number
+    ? 'number'
+    : 'other'
+
+type WithNumber = IsNumber<number>
+type WithString = IsNumber<string>
+
+ //check on test.ts file for more examples
+
+
+
+
 
 
 
