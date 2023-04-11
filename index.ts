@@ -562,6 +562,33 @@ console.log(pnt)
 type Neat = readonly number[]
 type Long = ReadonlyArray<number>
 
+// Double Assertion
+//? what's single assertion at first place
+
+type pnt2D = {x: number, y: number}
+type pnt3D = {x: number, y: number, z: number}
+type Prsn = {name: string, email: string}
+
+let point2: pnt2D = {x: 0, y: 0}
+let point3: pnt3D = {x: 10, y: 10, z:10}
+let persona: Prsn = {name: 'John', email: 'john@doe.com'}
+
+point2 = point3;
+//! point3 = point2;
+ // error ,Property 'z' is missing in type 'pnt2D' but required in type 'pnt3D'
+
+ point3 = point2 as pnt3D; // single type assertion : typescript would have ok i trust you kinda reply
+
+ //! but this is not only enough on all situations there's time when we need double assertion
+
+//  persona = point3; //error
+//  point3 = persona; //error
+//  point3 = persona as pnt3D; //error ok: i don't trust you enough.
+ point3 = persona as unknown as pnt3D; // ok: i doubly trust you.
+
+
+
+
 
 
 
