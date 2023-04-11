@@ -101,3 +101,47 @@ const helloMessage = reverse('hello')
 const h_e_l_l_o = reverse(['h', 'e', 'l', 'l', 'o'])
 console.log(helloMessage)
 console.log(h_e_l_l_o)
+
+// readonly array
+
+function reverseSorted(input: number[]): number[]{
+    return input.sort().reverse();
+}
+
+const start: number[] = [1,2,3,4,5]
+const result = reverseSorted(start)
+
+console.log(result) // [ 5, 4, 3, 2, 1 ]
+
+//! in this case the sort() function will imutate(change) the original value
+console.log(start) // [ 5, 4, 3, 2, 1 ]
+
+//? BUT WE'VE A SOLUTION FOR THIS IN MIGHTY TYPESCRIPT
+
+//! we use the readonly property
+//we only read the input values not imutate them
+
+function reverseSorter(input: readonly number[]): number[]{
+    // so it will show us an error while we're using sort for the inputs as we can't imutate the readonly values
+    // so we will use slice to copy the files first then adjust them like we want.
+    return input.slice().sort().reverse();
+}
+// so through out these steps we can make sure that we only change the input values when we're using the functions otherwise it will keep with the original values
+
+const end: number[] = [1,2,3,4,5]
+const res: number[] = reverseSorter(end)
+console.log(res, " ", end)
+
+//ex -2 
+
+type Pnt = readonly [number, number];
+
+function move(point: Pnt, x: number, y: number): Pnt {
+    return [point[0] + x, point[1] + y]
+}
+
+const pnt: Pnt = [0,0]
+const moves = move(pnt, 10,10)
+
+console.log(moves)
+console.log(pnt)

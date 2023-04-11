@@ -531,6 +531,39 @@ const personInfo: userInfoDictionary = {
     jane: {displayName: 'John', email: 'jhon@gmail.com'},
 }
 
+// Reanonlyarray
+
+//example 1
+function reverseSorted(input: number[]): number[]{
+    return input.sort().reverse();
+}
+
+const start = [1,2,3,4,5]
+const result = reverseSorted(start)
+
+console.log(result)
+console.log(start)
+
+//example 2
+
+type Pnt = readonly [number, number];
+
+function move(point: Pnt, x: number, y: number): Pnt {
+    return [point[0] + x, point[1] + y]
+}
+
+const pnt: Pnt = [0,0]
+const moves = move(pnt, 10,10)
+
+console.log(moves)
+console.log(pnt)
+// usages
+
+type Neat = readonly number[]
+type Long = ReadonlyArray<number>
+
+
+
 
 
 
