@@ -277,6 +277,7 @@ const num = typeName(456)
 const func = typeName(function (){})
 const nulls = typeName(null)
 const obj = typeName({})
+//test
 
 
 
