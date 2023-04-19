@@ -273,7 +273,7 @@ function typeName<T>(t: T): TypeName<T> {
 
 const str = typeName('hello world')
 const num = typeName(456)
-const big = typeName(24n)
+// const big = typeName(24n)
 const func = typeName(function (){})
 const nulls = typeName(null)
 const obj = typeName({})
