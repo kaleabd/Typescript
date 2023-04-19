@@ -5,6 +5,8 @@ import { Oscar } from './components/Oscar'
 import { Person } from './components/Person'
 import { PersonList } from './components/PersonList'
 import { Status } from './components/Status'
+import { Button } from './components/events/Buttons'
+import { Input } from './components/events/Input'
 
 function App() {
   // Objects
@@ -44,6 +46,12 @@ function App() {
       </Oscar>
       {/* optional type */}
       <Greet name="Kaleab" isLoggedIn= {true}/>
+      <Button 
+        handleClick={(e,id) => {
+          console.log("clikced", e, id);
+        }}
+      />
+      <Input value='' handleChange={(e) => console.log(e)}/>
     </div>
   )
 }
