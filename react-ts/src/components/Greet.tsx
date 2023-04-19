@@ -10,6 +10,15 @@ export const Greet = (props: GreetProps) => {
         from the props object. If the messageCount property
         is not present in the props object, it will default
         to 0. 
+
+        it's equivalent to this code:
+        let messageCount;
+        if (props.messageCount !== undefined) {
+        messageCount = props.messageCount;
+        } else {
+        messageCount = 0;
+        }
+
      */
     const {messageCount = 0} = props
     return(
