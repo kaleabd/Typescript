@@ -7,6 +7,7 @@ import { PersonList } from './components/PersonList'
 import { Status } from './components/Status'
 import { Button } from './components/events/Buttons'
 import { Input } from './components/events/Input'
+import { Container } from './components/styles/Container'
 
 function App() {
   // Objects
@@ -52,6 +53,7 @@ function App() {
         }}
       />
       <Input value='' handleChange={(e) => console.log(e)}/>
+      <Container styles ={{border: '3px solid red', padding: '1rem'}}/>
     </div>
   )
 }
